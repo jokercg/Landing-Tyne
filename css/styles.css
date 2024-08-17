@@ -11771,3 +11771,7 @@ html {
   font-size: 20px;
   border-radius: 24px;
 }
+
+.fondo {
+  background-color: var(--bs-body-bg);
+}
