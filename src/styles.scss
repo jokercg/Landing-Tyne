@@ -1,0 +1,360 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "bootstrap/scss/bootstrap-grid";
+
+// Add as many as you need
+// @import "bootstrap/scss/XXXX";
+
+:root {
+  --bs-body-color: #6F2524;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-gradient-primary-to-secondary {
+  background: #1e30f3;
+  background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rounded-4 {
+  border-radius: 1rem !important;
+}
+
+.feature {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.5rem;
+}
+
+.profile {
+  position: relative;
+  height: 75vw;
+  width: 75vw;
+  border-radius: 5vw;
+  margin-top: 5vw;
+  max-height: 40rem;
+  max-width: 40rem;
+}
+
+.img1 {
+  position: relative;
+  border-radius: 5vw;
+}
+
+.profile .profile-img {
+  height: 80vw;
+  max-height: 45rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.profile .dots-1 {
+  position: absolute;
+  width: 4vw;
+  right: 1.5vw;
+  top: 1vw;
+}
+
+.profile .dots-1 svg {
+  fill: #fff;
+}
+
+.profile .dots-2 {
+  position: absolute;
+  width: 4vw;
+  right: -4vw;
+  top: 4.05vw;
+}
+
+.profile .dots-2 svg {
+  fill: #DD4A48;
+}
+
+.profile .dots-3 {
+  position: absolute;
+  width: 4vw;
+  left: 1.5vw;
+  bottom: 6.05vw;
+}
+
+.profile .dots-3 svg {
+  fill: #fff;
+}
+
+.profile .dots-4 {
+  position: absolute;
+  width: 3vw;
+  left: -4vw;
+  bottom: 4vw;
+}
+
+.profile .dots-4 svg {
+  fill: #DD4A48;
+}
+
+@media (min-width: 576px) {
+  .profile {
+    height: 60vw;
+    width: 60vw;
+  }
+
+  .profile .profile-img {
+    height: 65vw;
+  }
+
+  .profile .dots-1 {
+    width: 3vw;
+    right: 1.5vw;
+  }
+
+  .profile .dots-2 {
+    width: 3vw;
+    right: -4vw;
+  }
+
+  .profile .dots-3 {
+    width: 3vw;
+    left: 1.5vw;
+  }
+
+  .profile .dots-4 {
+    width: 3vw;
+    left: -4vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .profile {
+    height: 50vw;
+    width: 50vw;
+  }
+
+  .profile .profile-img {
+    height: 55vw;
+  }
+
+  .profile .dots-1 {
+    width: 3vw;
+    right: 1.5vw;
+  }
+
+  .profile .dots-2 {
+    width: 3vw;
+    right: -4vw;
+  }
+
+  .profile .dots-3 {
+    width: 3vw;
+    left: 1.5vw;
+  }
+
+  .profile .dots-4 {
+    width: 3vw;
+    left: -4vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .profile {
+    height: 40vw;
+    width: 40vw;
+  }
+
+  .profile .profile-img {
+    height: 45vw;
+  }
+
+  .profile .dots-1 {
+    width: 1.5vw;
+    right: 0.75vw;
+  }
+
+  .profile .dots-2 {
+    width: 1.5vw;
+    right: -2vw;
+  }
+
+  .profile .dots-3 {
+    width: 1.5vw;
+    left: 0.75vw;
+  }
+
+  .profile .dots-4 {
+    width: 1.5vw;
+    left: -2vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profile {
+    height: 35vw;
+    width: 35vw;
+  }
+
+  .profile .profile-img {
+    height: 40vw;
+  }
+
+  .profile .dots-1 {
+    width: 1.5vw;
+    right: 0.75vw;
+  }
+
+  .profile .dots-2 {
+    width: 1.5vw;
+    right: -2vw;
+  }
+
+  .profile .dots-3 {
+    width: 1.5vw;
+    left: 0.75vw;
+  }
+
+  .profile .dots-4 {
+    width: 1.5vw;
+    left: -2vw;
+  }
+}
+
+/* Fondo diagonal */
+.bg-custom {
+  background: linear-gradient(90deg, #F8DBDA 4%, #F4C3C2 98%), #EEA4A3;
+  clip-path: polygon(0 0, 100% 8%, 100% 100%, 0% 92%);
+
+}
+
+/* Estilo de los indicadores */
+
+.carousel-indicators {
+  bottom: -20px; 
+  justify-content: center; 
+  padding: 10px; 
+}
+.carousel-indicators [data-bs-target] {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: 24px;
+  height: 6px;
+  padding: 0;
+  margin-right: 4px;
+  margin-left: 4px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #4F091D;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 4px;
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  transition: opacity 0.6s ease;
+}
+
+.carousel-indicators button {
+  width: 24px !important;
+  height: 6px !important;
+  background-color: #4F091D !important; 
+  border-radius: 6px !important; 
+  border: none; 
+}
+
+.carousel-indicators .active {
+  background-color: #4F091D; 
+}
+
+.contacto {
+  background-color: #4F091D;
+}
+
+.fondo-icono {
+  background-color: #4F091D;
+  font-size: 20px;
+  border-radius: 24px;
+}
+
+/*.fondo-icono:focus {
+  background-color: #C4ADB4;
+  font-size: 20px;
+  border-radius: 24px;
+  border: none;
+}*/
+.fondo-icono:hover {
+  background-color: #C4ADB4;
+  font-size: 20px;
+  border-radius: 24px;
+  border: none;
+}
+
+.fondo {
+  background-color: var(--bs-body-bg);
+}
+
+// custom
+
+.content {
+  padding-top: 120px;
+}
+
+.custom-btn {
+  background-color: #4F091D;
+  border-color: #4F091D; 
+  color: #ffffff; 
+  padding: 6px 24px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.custom-btn:hover {
+  background-color: #C4ADB4; 
+  border-color: #C4ADB4; 
+  color: #4F091D; 
+}
+.custom-btn:active {
+  background-color: #350613 !important; /* Mantener el color de fondo cuando se hace clic */
+  border-color: #350613 !important; /* Mantener el color del borde cuando se hace clic */
+  color: #ffffff; /* Mantener el color del texto cuando se hace clic */
+}
+
+section {
+  scroll-margin-top: 24px; 
+}
+.accordion-button:not(.collapsed) {
+  background-color: #DCCED2; 
+  color: #000; 
+}
+.accordion-button:focus,
+.accordion-button:not(.collapsed) {
+  box-shadow: 0 0 0 0.25rem rgba(221, 74, 72, 0.25); 
+}
+/*
+.btn-social:focus .bi {
+  color: #4F091D; 
+}
+*/
+.btn-social:hover .bi {
+  color: #4F091D; 
+}
+.btn-social {
+  transition: background-color 0.3s ease, border-color 0.3s ease !important;
+}
+.no-underline {
+  text-decoration: none;
+}
+
