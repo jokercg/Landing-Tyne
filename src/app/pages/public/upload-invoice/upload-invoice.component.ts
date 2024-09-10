@@ -4,7 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip'; 
+import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip'; 
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-upload-invoice',
@@ -26,4 +27,21 @@ export class UploadInvoiceComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+}
+
+/**
+ * Directiva para activar el tooltip en dispositivos móviles con un solo toque
+ */
+@Directive({
+  selector: '[appTooltipTouch]'
+})
+export class TooltipTouchDirective {
+  constructor(private tooltip: MatTooltip, private elementRef: ElementRef) {}
+
+  // Detecta cuando el usuario toca la pantalla y muestra el tooltip
+  @HostListener('touchstart', ['$event'])
+  onTouchStart(event: Event): void {
+    this.tooltip.show();
+  }
+
 }
