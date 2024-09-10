@@ -1,86 +1,102 @@
 <div class="container mt-5">
-
-
-
   <div class="form-wrapper">
     <div class="row">
       <div class="col-md-6 d-flex fondo">
         <div class="info-wrapper">
-
-          <p class="fs-2 ">Únete al Club de Socios</p>
-          <p class="fs-5 pt-1"> Al realizar compras en cualquier comercio asociado, acumulas el 10% del valor de tu
-            compra en forma de descuentos. Cuando hayas acumulado $10,000 CLP, podrás usar ese monto como descuento en
-            futuras compras.</p>
+          <p class="fs-2">Únete al Club de Socios</p>
+          <p class="fs-5 pt-1">
+            Al realizar compras en cualquier comercio asociado, acumulas el 10%
+            del valor de tu compra en forma de descuentos. Cuando hayas
+            acumulado $10,000 CLP, podrás usar ese monto como descuento en
+            futuras compras.
+          </p>
           <p class="fs-5 pt-1">Los descuentos son válidos por 1 año.</p>
-          <p class="fs-5 pt-1">Es necesario que registres todas tus compras con el mismo nombre, correo y RUT, ya que
-            los
-            descuentos son personales e intransferibles.</p>
-          <p class="fs-5 pt-3">Recibirás un resumen de tus descuentos cada 14 días. Ten en cuenta que los descuentos no
-            pueden combinarse
-            con otras promociones o descuentos bancarios.</p>
+          <p class="fs-5 pt-1">
+            Es necesario que registres todas tus compras con el mismo nombre,
+            correo y RUT, ya que los descuentos son personales e
+            intransferibles.
+          </p>
+          <p class="fs-5 pt-3">
+            Recibirás un resumen de tus descuentos cada 14 días. Ten en cuenta
+            que los descuentos no pueden combinarse con otras promociones o
+            descuentos bancarios.
+          </p>
         </div>
       </div>
 
       <div class="col-md-6">
+        <h2>Sube tu Comprobante</h2>
         <form>
           <!-- Seleccionar Comercio -->
-          <div class="form-group">
-            <h2>Sube tu Comprobante</h2>
+          <div class="form-group position-relative">
             <label for="commerce" class="form-label">Selecciona el Comercio</label>
-            <select id="commerce" class="form-control custom-select" required>
-              <option value="" disabled selected>Selecciona un comercio</option>
-              <option value="comercio1">Comercio 1</option>
-              <option value="comercio2">Comercio 2</option>
-              <option value="comercio3">Comercio 3</option>
-              <!-- Agrega más opciones según sea necesario -->
-            </select>
+            <input type="text" id="commerce" class="form-control"
+              placeholder="Escribe para buscar o selecciona un comercio" list="commerce-options" required />
+            <i class="bi bi-info-circle icon-tooltip"
+              matTooltip="Este dato se usará para llevar un registro de tus compras y análisis estadísticos."></i>
+            <datalist id="commerce-options">
+              <option value="Comercio 1"></option>
+              <option value="Comercio 2"></option>
+              <option value="Comercio 3">
+                <!-- Agrega más opciones según sea necesario -->
+              </option>
+            </datalist>
           </div>
 
           <!-- Nombre -->
-          <div class="form-group ">
+          <div class="form-group position-relative">
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" id="name" class="form-control" placeholder="Ingresa tu nombre" required>
-
+            <input type="text" id="name" class="form-control" placeholder="Ingresa tu nombre" required />
+            <i class="bi bi-info-circle icon-tooltip"
+              matTooltip="Solo se usará para identificarte. Esta información es confidencial y no se comparte con terceros."></i>
           </div>
-
 
           <!-- Correo Electrónico -->
           <div class="form-group position-relative">
             <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" id="email" class="form-control" placeholder="Ingresa tu correo electrónico" required>
-            <i class="bi bi-info-circle icon-tooltip" matTooltip="En este email te llegarán invitaciones a eventos, descuentos virtuales canjeables en www.tyne.cl, promos exclusivas, etc.
-            Si no recibes ningún email dentro de las próximas 72 horas asegúrate de revisar spam."></i>
+            <input type="email" id="email" class="form-control" placeholder="Ingresa tu correo electrónico" required />
+            <i class="bi bi-info-circle icon-tooltip"
+              matTooltip="Te enviaremos notificaciones importantes como saldos, registros exitosos y montos aprobados. También recibirás información y ofertas de los comercios asociados."></i>
           </div>
 
-          <!-- RUT -->
+          <!-- Boleta -->
           <div class="form-group position-relative">
-            <label for="rut" class="form-label">RUT</label>
-            <input type="text" id="rut" class="form-control" placeholder="Ingresa tu RUT" required>
-            <i class="bi bi-info-circle icon-tooltip" matTooltip="Es sólo para que puedas identificarte en el local cuando quieras canjear tus puntos, estos no se pueden transferir y son personales, por lo que cada compra que se hagas deberías registrar tus puntos bajo tu rut , email y nombre."></i>
+            <label for="receipt-number" class="form-label">Número de Boleta</label>
+            <input type="text" id="receipt-number" class="form-control" placeholder="Ingresa el número de boleta"
+              required />
+            <i class="bi bi-info-circle icon-tooltip" matTooltip="Nro de boleta/comprobante o código de autorización: Este código único nos ayuda a identificar tu compra de forma precisa para asegurar la transparencia y proteger a los comercios.
+              "></i>
           </div>
 
           <!-- Monto de la Compra -->
           <div class="form-group position-relative">
             <label for="amount" class="form-label">Monto de la Compra</label>
-            <input type="number" id="amount" class="form-control" placeholder="Ingresa el monto" required>
-            <i class="bi bi-info-circle icon-tooltip" matTooltip="Ingreso el monto gastado SIN PROPINA en pesos chilenos (solo números). Asegúrate de que coincida con el monto pagado en el local para evitar problemas con tus puntos."></i>
+            <input type="number" id="amount" class="form-control" placeholder="Ingresa el monto" required />
+            <i class="bi bi-info-circle icon-tooltip"
+              matTooltip="Asegúrate de que coincida con el total en la boleta para evitar errores si la imagen no es clara o legible."></i>
           </div>
 
           <!-- Subir Comprobante -->
           <div class="form-group position-relative">
             <label for="receipt" class="form-label">Sube tu Comprobante</label>
-            <input type="file" id="receipt" class="form-control-file" required><br>
-            <i class="bi bi-info-circle icon-tooltip" matTooltip="Sube una foto clara de tu boleta o comprobante de pago. Solo la persona que pagó puede registrar puntos. Si se dividió la cuenta, cada uno debe subir su propio comprobante. Tienes 24 hrs desde la emisión para subirlo"></i>
-            <small class="form-text text-muted ">Selecciona el archivo de tu comprobante.</small>
+            <input type="file" id="receipt" class="form-control-file" required /><br />
+            <i class="bi bi-info-circle icon-tooltip"
+              matTooltip="Sube una foto de tu boleta para confirmar tu compra. Tienes 24 horas desde la emisión del documento para registrarlo."></i>
+            <small class="form-text text-muted">Selecciona el archivo de tu comprobante.</small>
           </div>
 
           <!-- Texto de Aceptación -->
           <div class="form-group">
-            <p class="text-center">Al enviar este formulario, aceptas nuestras políticas y condiciones.</p>
+            <p class="text-center">
+              Al enviar este formulario, aceptas nuestras políticas y
+              condiciones.
+            </p>
           </div>
 
           <!-- Botón de Enviar -->
-          <button type="submit" class="btn btn-primary custom-btn w-100 mt-4">Enviar</button>
+          <button type="submit" class="btn btn-primary custom-btn w-100 mt-4">
+            Enviar
+          </button>
         </form>
       </div>
     </div>

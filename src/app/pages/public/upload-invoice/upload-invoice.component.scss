@@ -139,8 +139,17 @@
   position: absolute;
   top: 0; 
   right: 10px; 
-  color: #333; 
+  color: #350613; 
   margin-top: 4px;
   cursor: pointer;
   z-index: 10; 
+  padding: 2px;
+}
+@media (max-width: 576px) {
+  .icon-tooltip {
+    font-size: 1.125rem; /* Aumenta el tamaño del icono en dispositivos móviles */
+    top: 0px; /* Ajusta la posición */
+    right: 2px; /* Ajusta la posición */
+    padding: 2px;
+  }
 }
