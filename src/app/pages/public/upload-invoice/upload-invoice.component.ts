@@ -29,16 +29,14 @@ export class UploadInvoiceComponent implements OnInit {
   ngOnInit() {}
 }
 
-/**
- * Directiva para activar el tooltip en dispositivos móviles con un solo toque
- */
+
 @Directive({
   selector: '[appTooltipTouch]'
 })
 export class TooltipTouchDirective {
   constructor(private tooltip: MatTooltip, private elementRef: ElementRef) {}
 
-  // Detecta cuando el usuario toca la pantalla y muestra el tooltip
+
   @HostListener('touchstart', ['$event'])
   onTouchStart(event: Event): void {
     this.tooltip.show();
