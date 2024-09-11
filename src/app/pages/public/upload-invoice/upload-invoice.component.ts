@@ -42,4 +42,8 @@ export class TooltipTouchDirective {
     this.tooltip.show();
   }
 
+  @HostListener('touchend', ['$event'])
+  onTouchEnd(event: Event): void {
+    this.tooltip.hide();
+  }
 }
