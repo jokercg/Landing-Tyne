@@ -156,13 +156,18 @@ padding: 2px;
 }
 
 .tooltip-instruction {
-  display: flex;
+  display: none;
   align-items: center;
   font-size: 0.85rem;
   color: #350613;
   margin-top: 16px;
 }
 
-.tooltip-instruction i {
-  margin-right: 16px;
+
+
+@media (max-width: 576px) {
+  .tooltip-instruction {
+    display: flex; /* Solo se muestra en dispositivos móviles */
+  }
+  
 }
