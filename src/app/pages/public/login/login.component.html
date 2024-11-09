@@ -3,39 +3,60 @@
     <div class="col-md-6 col-lg-4">
       <mat-card class="login-card">
         <div class="text-center">
-          <img src="/assets/tyne-logo-color.png" alt="Tyne Logo" class="logo" style="width: 140px; height: auto;" />
+          <img
+            src="/assets/tyne-logo-color.png"
+            alt="Tyne Logo"
+            class="logo"
+            style="width: 140px; height: auto"
+          />
         </div>
         <mat-card-header>
           <mat-card-title class="text-center">Inicia sesión</mat-card-title>
-          <!--<mat-card-subtitle class="text-center">Welcome back! Please log in to your account.</mat-card-subtitle>-->
         </mat-card-header>
         <mat-card-content>
-          <form>
+          <form [formGroup]="loginForm" (ngSubmit)="this.login()">
             <mat-form-field appearance="fill" class="w-100 mb-3">
               <mat-label>Correo</mat-label>
-              <input matInput formControlName="email" placeholder="Ingresa tu correo electronico"  required />
-              <!-- <mat-error *ngIf="loginForm.get('email').hasError('required')">
-                Email is required
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Ingresa tu correo electronico"
+                required
+              />
+
+              <mat-error *ngIf="this.emailError"
+                >{{ this.msgErrorEmail }}
               </mat-error>
-              <mat-error *ngIf="loginForm.get('email').hasError('email')">
-                Enter a valid email
-              </mat-error> -->
             </mat-form-field>
 
             <mat-form-field appearance="fill" class="w-100 mb-3">
               <mat-label>Contraseña</mat-label>
-              <input matInput type="password" formControlName="password" placeholder="Ingresa tu contraseña" required />
-              <!-- <mat-error *ngIf="loginForm.get('password').hasError('required')">
-                Password is required
-              </mat-error> -->
+              <input
+                matInput
+                type="password"
+                formControlName="password"
+                placeholder="Ingresa tu contraseña"
+                required
+              />
+              <mat-error *ngIf="this.passwordError">
+                {{ this.msgErrorPassword }}
+              </mat-error>
             </mat-form-field>
 
             <div class="mb-4 mt-2">
-              <a class="btn btn-primary custom-btn w-100" type="submit">Iniciar Sesión</a>
+              <button
+                class="btn btn-primary custom-btn w-100"
+                type="submit"
+                [disabled]="disabledButton"
+              >
+                Iniciar Sesión
+              </button>
             </div>
 
             <div class="links-container text-center text-primary">
-              <a mat-button routerLink="/forgot-password">¿Olvidaste tu contraseña?</a>
+              <a mat-button routerLink="/forgot-password"
+                >¿Olvidaste tu contraseña?</a
+              >
               <a mat-button routerLink="/register">¡Crea una cuenta!</a>
             </div>
           </form>

@@ -12,9 +12,8 @@
           </p>
           <p class="fs-5 pt-1">Los descuentos son válidos por 1 año.</p>
           <p class="fs-5 pt-1">
-            Es necesario que registres todas tus compras con el mismo nombre,
-            correo y RUT, ya que los descuentos son personales e
-            intransferibles.
+            Es necesario que registres todas tus compras con los mismos datos,
+            ya que los descuentos son personales e intransferibles
           </p>
           <p class="fs-5 pt-3">
             Recibirás un resumen de tus descuentos cada 14 días. Ten en cuenta
@@ -25,74 +24,153 @@
       </div>
 
       <div class="col-md-6">
-        <h2 class="mt-4">Sube tu Comprobante</h2>
+        <h2 class="mt-2">Sube tu Comprobante</h2>
 
-        <div class="tooltip-instruction ">
-          <i class="bi bi-info-circle icon-tooltip-global"></i> Mantén presionado el ícono para ver la información.
-        </div>
-        <form>
+        <form [formGroup]="form" (ngSubmit)="this.upload()">
           <!-- Seleccionar Comercio -->
+          <label for="commerce" class="form-label mt-1"
+            >Selecciona el Comercio</label
+          >
           <div class="form-group position-relative">
-            <label for="commerce" class="form-label mt-1">Selecciona el Comercio</label>
-            <input type="text" id="commerce" class="form-control"
-              placeholder="Escribe para buscar o selecciona un comercio" list="commerce-options" required />
-            <i class="bi bi-info-circle icon-tooltip"
-              matTooltip="Este dato se usará para llevar un registro de tus compras y análisis estadísticos."></i>
-            <datalist id="commerce-options">
-              <option value="Comercio 1"></option>
-              <option value="Comercio 2"></option>
-              <option value="Comercio 3">
-                <!-- Agrega más opciones según sea necesario -->
-              </option>
-            </datalist>
+            <mat-form-field appearance="fill" class="w-100 mb-3">
+              <input
+                type="text"
+                matInput
+                placeholder="Comercios"
+                formControlName="business"
+                [matAutocomplete]="auto"
+                required
+              />
+              <mat-autocomplete
+                #auto="matAutocomplete"
+                [displayWith]="displayBusinessName"
+              >
+                <mat-option
+                  *ngFor="let option of filteredBusiness | async"
+                  [value]="option"
+                >
+                  {{ option.name }}
+                </mat-option>
+              </mat-autocomplete>
+
+              <mat-error *ngIf="this.businessError()"
+                >{{ this.businessError() }}
+              </mat-error>
+            </mat-form-field>
           </div>
 
           <!-- Nombre -->
           <div class="form-group position-relative">
-            <label for="name" class="form-label mt-1">Nombre</label>
-            <input type="text" id="name" class="form-control" placeholder="Ingresa tu nombre" required />
-            <i class="bi bi-info-circle icon-tooltip"
-              matTooltip="Solo se usará para identificarte. Esta información es confidencial y no se comparte con terceros."></i>
+            <label for="name" class="form-label">Nombre</label>
+
+            <mat-form-field appearance="fill" class="w-100 mb-3">
+              <input
+                matInput
+                formControlName="name"
+                placeholder="Ingresa tu nombre"
+                required
+              />
+
+              <mat-error *ngIf="this.nameError()"
+                >{{ this.nameError() }}
+              </mat-error>
+            </mat-form-field>
+            <i
+              class="bi bi-info-circle icon-tooltip"
+              matTooltip="Solo se usará para identificarte. Esta información es confidencial y no se comparte con terceros."
+            ></i>
           </div>
 
           <!-- Correo Electrónico -->
           <div class="form-group position-relative">
-            <label for="email" class="form-label mt-1">Correo Electrónico</label>
-            <input type="email" id="email" class="form-control" placeholder="Ingresa tu correo electrónico" required />
-            <i class="bi bi-info-circle icon-tooltip"
-              matTooltip="Te enviaremos notificaciones importantes como saldos, registros exitosos y montos aprobados. También recibirás información y ofertas de los comercios asociados."></i>
+            <label for="email" class="form-label">Correo Electrónico</label>
+
+            <mat-form-field appearance="fill" class="w-100 mb-3">
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Ingresa tu correo electronico"
+                required
+              />
+
+              <mat-error *ngIf="this.emailError()"
+                >{{ this.emailError() }}
+              </mat-error>
+            </mat-form-field>
+            <i
+              class="bi bi-info-circle icon-tooltip"
+              matTooltip="Te enviaremos notificaciones importantes como saldos, registros exitosos y montos aprobados. También recibirás información y ofertas de los comercios asociados."
+            ></i>
           </div>
 
           <!-- Boleta -->
           <div class="form-group position-relative">
-            <label for="receipt-number" class="form-label mt-1">Número de Boleta</label>
-            <input type="text" id="receipt-number" class="form-control" placeholder="Ingresa el número de boleta"
-              required />
-            <i class="bi bi-info-circle icon-tooltip" matTooltip="Nro de boleta/comprobante o código de autorización: Este código único nos ayuda a identificar tu compra de forma precisa para asegurar la transparencia y proteger a los comercios.
-              "></i>
+            <label for="receipt-number" class="form-label"
+              >Número de Boleta</label
+            >
+
+            <mat-form-field appearance="fill" class="w-100 mb-3">
+              <input
+                matInput
+                formControlName="invoiceNumber"
+                placeholder="Ingresa el número de boleta"
+                required
+              />
+
+              <mat-error *ngIf="this.invoiceNumberError()"
+                >{{ this.invoiceNumberError() }}
+              </mat-error>
+            </mat-form-field>
+            <i
+              class="bi bi-info-circle icon-tooltip"
+              matTooltip="Nro de boleta/comprobante o código de autorización: Este código único nos ayuda a identificar tu compra de forma precisa para asegurar la transparencia y proteger a los comercios.
+              "
+            ></i>
           </div>
 
           <!-- Monto de la Compra -->
           <div class="form-group position-relative">
-            <label for="amount" class="form-label mt-1">Monto de la Compra</label>
-            <input type="number" id="amount" class="form-control" placeholder="Ingresa el monto" required />
-            <i class="bi bi-info-circle icon-tooltip"
-              matTooltip="Asegúrate de que coincida con el total en la boleta para evitar errores si la imagen no es clara o legible."
-              appTooltipTouch></i>
+            <label for="amount" class="form-label">Monto de la Compra</label>
+
+            <mat-form-field appearance="fill" class="w-100 mb-3">
+              <input
+                matInput
+                formControlName="amount"
+                type="number"
+                placeholder="Ingresa el monto de la compra"
+                required
+                maxlength="7"
+                (keydown)="validateNumberInput($event)"
+              />
+
+              <mat-error *ngIf="this.amountError()"
+                >{{ this.amountError() }}
+              </mat-error>
+            </mat-form-field>
+            <i
+              class="bi bi-info-circle icon-tooltip"
+              matTooltip="Asegúrate de que coincida con el total en la boleta (sin propina en caso de que el comercio la solicite o la hayas entregado)  para evitar errores si la imagen no es clara o legible."
+            ></i>
           </div>
 
           <!-- Subir Comprobante -->
           <div class="form-group position-relative">
-            <label for="receipt" class="form-label mt-1">Sube tu Comprobante</label>
-            <input type="file" id="receipt" class="form-control-file" required /><br />
-            <i class="bi bi-info-circle icon-tooltip"
+            <label for="receipt" class="form-label">Sube tu Comprobante</label>
+            <input
+              type="file"
+              id="receipt"
+              class="form-control-file"
+              required
+              (change)="onFileSelected($event)"
+            /><br />
+            <i
+              class="bi bi-info-circle icon-tooltip"
               matTooltip="Sube una foto de tu boleta para confirmar tu compra. Tienes 24 horas desde la emisión del documento para registrarlo."
-              appTooltipTouch></i>
-            <small class="form-text text-muted">Selecciona el archivo de tu comprobante.</small>
+            ></i>
           </div>
 
           <!-- Texto de Aceptación -->
-          <div class="form-group">
+          <div class="form-group mt-2">
             <p class="text-center">
               Al enviar este formulario, aceptas nuestras políticas y
               condiciones.
@@ -100,7 +178,11 @@
           </div>
 
           <!-- Botón de Enviar -->
-          <button type="submit" class="btn btn-primary custom-btn w-100 mt-4">
+          <button
+            type="submit"
+            class="btn btn-primary custom-btn w-100"
+            [disabled]="btnSubmitDisabled"
+          >
             Enviar
           </button>
         </form>

@@ -1,0 +1,34 @@
+name: development
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+      - uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          dontautocreate: false
+          usedocker: true
+          justlogin: true
+          docker_build_args: |
+            ENV
+        env:
+          ENV: production
+      - name: "Login to heroku registry"
+        run: heroku container:login
+
+      - name: Push Docker image to Heroku
+        run: |
+          heroku container:push web --app tyne-app
+          heroku container:release web --app tyne-app

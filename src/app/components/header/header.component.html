@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light py-3 fondo fixed-top">
   <div class="container px-5">
-    <a class="navbar-brand" [routerLink]="['/']"
-      ><img src="../../assets/tyne-logo-color.png" alt="Tu Logo" height="64"
-    /></a>
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img src="../../assets/tyne-logo-color.png" alt="Tu Logo" height="64" />
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,25 +14,39 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-center text-center" id="navbarSupportedContent">
+    <div
+      class="collapse navbar-collapse justify-content-center text-center"
+      id="navbarSupportedContent"
+    >
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
         <li class="nav-item">
-          <a class="nav-link" href="#inicio">Inicio</a>
+          <a class="nav-link" href="#inicio" (click)="toggleNavbar()">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#beneficios">Beneficios</a>
+          <a class="nav-link" href="#beneficios" (click)="toggleNavbar()">Beneficios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#como-usar">Como usar</a>
+          <a class="nav-link" href="#como-usar" (click)="toggleNavbar()">Como usar</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contacto">Contacto</a>
+          <a class="nav-link" href="#contacto" (click)="toggleNavbar()">Contacto</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/subir-boleta']">Subir boleta</a>
-        </li> 
+
+        <ng-container *ngFor="let item of routes">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="[item.route]" (click)="toggleNavbar()">{{ item.name }}</a>
+          </li>
+        </ng-container>
+
         <li class="nav-item ms-4">
-          <a class="btn btn-primary custom-btn w-100" [routerLink]="['/login']">Iniciar Sesión</a>
+          <button
+            *ngIf="showButton"
+            class="btn btn-primary custom-btn w-100"
+            [disabled]="disabledButton"
+            (click)="actionButton()"
+          >
+            {{ titleButton }}
+          </button>
         </li>
       </ul>
     </div>

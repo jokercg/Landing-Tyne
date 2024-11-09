@@ -1,0 +1,24 @@
+.custom-btn {
+  width: 40%;
+  margin: 0 auto;
+  background-color: #4F091D;
+  border-color: #4F091D; 
+  color: #ffffff; 
+  padding: 6px 24px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.custom-btn:hover {
+  background-color: #C4ADB4; 
+  border-color: #C4ADB4; 
+  color: #4F091D; 
+}
+.custom-btn:active {
+  background-color: #350613 !important; /* Mantener el color de fondo cuando se hace clic */
+  border-color: #350613 !important; /* Mantener el color del borde cuando se hace clic */
+  color: #ffffff; /* Mantener el color del texto cuando se hace clic */
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+  border-radius: 8px !important;
+}
